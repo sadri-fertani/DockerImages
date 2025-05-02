@@ -1,0 +1,13 @@
+docker-compose up
+docker-compose kill -s SIGINT
+
+
+CNESST.SF1.TEST02 -> 790cb745564eb3005208634cf34c0dfd07a1c88e
+
+
+dotnet-sonarscanner begin /k:"CNESST.SF1.TEST02" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="790cb745564eb3005208634cf34c0dfd07a1c88e"
+MsBuild.exe /t:Rebuild
+dotnet-sonarscanner end /d:sonar.login="790cb745564eb3005208634cf34c0dfd07a1c88e"
+
+dotnet build CNESST.SF1.TEST02.sln
+dotnet C:\SonarQubeScanner\SonarScanner.MSBuild.dll end /d:sonar.login="790cb745564eb3005208634cf34c0dfd07a1c88e" 

@@ -1,3 +1,6 @@
+admin/admin => admin/SF.Son@rQube.0
+
+
 docker-compose up
 docker-compose kill -s SIGINT
 

@@ -146,7 +146,7 @@ vault namespace unlock -unlock-key <unlock key> ns1/
             //var authMethod = new LDAPAuthMethodInfo(_config.Login, _config.Password);
 
 // Wrap method
-            //string wrappingToken = "hvs.CAESIMwSI96OPn8fnjR0tnDU0516DW-ccL1bD6d6UBp7432yGh4KHGh2cy5TdEw5TElPYkxBMmMyZGJ5bUg4S0xOOUg";
+            //string wrappingToken = "hvs.....";
             //var tokenAuthMethodInfo = new TokenAuthMethodInfo(wrappingToken);
             //IVaultClient vaultClientForUnwrapping = new VaultClient(new VaultClientSettings(_config.Address, tokenAuthMethodInfo));
             //Secret<Dictionary<string, object>> secretIdData = vaultClientForUnwrapping.V1.System
@@ -154,7 +154,7 @@ vault namespace unlock -unlock-key <unlock key> ns1/
             //var secretId = secretIdData.Data["secret_id"]; // Grab the secret_id 
             //var authMethod = new AppRoleAuthMethodInfo(_config.RoleId, secretId.ToString());
 
-            //var authMethod = new JWTAuthMethodInfo("29sfV5vtXQBu7iI8h6zWBjt7y0HtJJfm", "hvo_secret_LhSbmDzBWPVUbNY0IJ964DhTRbTLPAJGlEVUZE8I8KBwQZMoBuAsjG0N4Z64akXI");
+            //var authMethod = new JWTAuthMethodInfo(".....", "....");
 
             // Approle+secretid
             //var authMethod = new AppRoleAuthMethodInfo(_config.RoleId, _config.SecretId);

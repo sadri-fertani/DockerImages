@@ -13,6 +13,7 @@ Des images docker pour faciliter le developpement local.
 - &check; Redis
 - &check; SonarQube
 - &check; SqlServer 2022
+- &check; Smtp
 
 # Chargement
 Pour charger une image, il faut se positionner dans le repertoire cible puis executer cette commande :

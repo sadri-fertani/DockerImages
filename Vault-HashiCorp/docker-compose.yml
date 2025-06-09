@@ -1,0 +1,16 @@
+services:
+  vault:
+    image: hashicorp/vault
+    container_name: 'vault'
+    ports:
+      - 8200:8200
+    volumes:
+      - ./vault/config:/vault/config
+      - ./vault/data:/vault/data
+      - ./vault/policies:/vault/policies
+      - ./vault/logs:/vault/logs
+    environment:
+      VAULT_ADDR: http://127.0.0.1:8200
+    entrypoint: vault server -config=/vault/config/config.hcl
+    cap_add:
+      - IPC_LOCK

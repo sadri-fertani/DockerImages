@@ -42,7 +42,7 @@ services:
     env_file:
       - path: .env
         required: true
-    restart: always
+#    restart: always
     healthcheck:
       test: ["CMD-SHELL", "timeout 10s bash -c ':> /dev/tcp/127.0.0.1/9600' || exit 1"]
       interval: 30s
@@ -188,6 +188,8 @@ services:
       timeout: 1s
       retries: 5
       start_period: 30s
+    # volumes:
+    #   - ./connectors:/opt/connectors
     networks:
       - camunda-platform
     depends_on:
@@ -225,7 +227,7 @@ services:
       start_period: 30s
     volumes:
       - "./.optimize/environment-config.yaml:/optimize/config/environment-config.yaml"
-    restart: on-failure
+#    restart: on-failure
     networks:
       - camunda-platform
     depends_on:
@@ -294,7 +296,7 @@ services:
       timeout: 15s
       retries: 30
       start_period: 60s
-    restart: on-failure
+#    restart: on-failure
     volumes:
       - keycloak-theme:/app/keycloak-theme
     networks:
@@ -311,7 +313,7 @@ services:
       POSTGRES_DB: bitnami_keycloak
       POSTGRES_USER: bn_keycloak
       POSTGRES_PASSWORD: "#3]O?4RGj)DE7Z!9SA5"
-    restart: on-failure
+#    restart: on-failure
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
       interval: 10s
@@ -336,7 +338,7 @@ services:
       KEYCLOAK_DATABASE_PASSWORD: "#3]O?4RGj)DE7Z!9SA5"
       KEYCLOAK_ADMIN_USER: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    restart: on-failure
+#    restart: on-failure
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:18080/auth"]
       interval: 30s
@@ -366,7 +368,7 @@ services:
       memlock:
         soft: -1
         hard: -1
-    restart: always
+#    restart: always
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:9200/_cat/health | grep -q green"]
       interval: 30s
@@ -512,7 +514,7 @@ services:
       PUSHER_APP_SECRET: web-modeler-app-secret
     networks:
       - web-modeler
-
+  
 volumes:
   zeebe:
   elastic:

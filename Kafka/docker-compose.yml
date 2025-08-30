@@ -26,3 +26,29 @@ services:
     environment:
       KAFKA_BROKERCONNECT: host.docker.internal:9092
       JVM_OPTS: "-Xms32M -Xmx64M"
+
+  akhq:
+    image: tchiotludo/akhq:latest
+    container_name: akhq
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            my-cluster:
+              properties:
+                bootstrap.servers: "host.docker.internal:9092"
+  
+  rest-proxy:
+    image: confluentinc/cp-kafka-rest:7.5.0
+    depends_on:
+      - kafka
+    ports:
+      - "8082:8082"
+    environment:
+      KAFKA_REST_HOST_NAME: rest-proxy
+      KAFKA_REST_LISTENERS: http://0.0.0.0:8082
+      KAFKA_REST_BOOTSTRAP_SERVERS: host.docker.internal:9092

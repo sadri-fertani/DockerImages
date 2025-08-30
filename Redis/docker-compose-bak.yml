@@ -1,12 +1,11 @@
-version: "3"
 services:
-  redis:
+  cache:
     image: redis:6.2-alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
-    volumes:
-      - redis-data:/data
-
+    volumes: 
+      - cache:/data
 volumes:
-  redis-data:
+  cache:
+    driver: local
